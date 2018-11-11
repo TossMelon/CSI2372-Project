@@ -16,11 +16,11 @@
 class Card
 {
 	char face, colour;
-	
 	private:
 		Card(char faceIn, char colourIn); //Card constructor
 	public:
-		print(); //Print Card
+		string row(int rowNum);
+		void print();
 };
 
 #endif
