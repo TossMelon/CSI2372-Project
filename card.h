@@ -15,13 +15,12 @@
 
 class Card
 {
-	char face;
-	char colour;
+	char face, colour;
 	
 	private:
 		Card(char faceIn, char colourIn); //Card constructor
-		
-		
+	public:
+		print(); //Print Card
 };
 
 #endif
