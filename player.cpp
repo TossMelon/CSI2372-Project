@@ -20,8 +20,7 @@ using std::endl;
 using std::ostream;
 using std::string;
 
-bool endOfGame = true;
-
+bool Player::ENDGAME = false;
 //Player Constructor
 Player::Player(string nameIn) {
 	name = nameIn;
@@ -59,7 +58,7 @@ void Player::setActive(bool s) {
 }
 
 //Returns true if Player status is active, false otherwise
-bool Player::isActive() {
+bool Player::isActive() const{
 	return status;
 }
 
@@ -75,13 +74,13 @@ void Player::addReward(const Reward&) {
 
 //
 void Player::setDisplayMode(bool endOfGame) {
-	
+	ENDGAME = endOfGame;
 }
 
 //Overload stream insertion operator
 //Displays Player stats based on endOfGame condition
 ostream& operator<<(ostream& out, const Player& p) {
-	if(endOfGame == false) {
+	if(Player::ENDGAME == false) {
 		if(p.isActive()){
 			out << p.getName()<<": "<<p.boardSide<<" (active)"<<endl;
 		} else {
