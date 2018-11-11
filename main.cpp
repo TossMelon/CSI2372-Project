@@ -47,13 +47,14 @@ int main() {
 	cout<<"Enter the number of players (1-4): ";
 	cin>>players;
 	
-	//create array of pointer type Player
+	Player *playerArray [players];
+	
 	
 	for(int i=1; i<=players; i++) {
 		cout<<"Enter Name of Player " <<i<<": "<<std::flush;
 		cin>>name;
 		cin.ignore(256, '\n' );
-		//populate array slot with player 
+		playerArray[i - 1] = new Player;
 	}
 	
 	/*while(!Rules.gameOver()) {
@@ -64,7 +65,7 @@ int main() {
 			
 		}
 		
-	}
+	}*/
 
 	return 0;	
 }
