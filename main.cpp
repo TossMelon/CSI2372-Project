@@ -36,10 +36,7 @@ int main() {
 	int mode, players;
 	string name;
 	
-	Player *p = new Player("Max");
-	cout<<*p;
-	
-	/*cout<<"Memoarrr!"<<endl;
+	cout<<"Memoarrr!"<<endl;
 	cout<<"Choose a game version (1-3):"<<endl;
 	cout<<"(1) Base Mode"<<endl;
 	cout<<"(2) Expert Display Mode"<<endl;
@@ -50,11 +47,13 @@ int main() {
 	cout<<"Enter the number of players (1-4): ";
 	cin>>players;
 	
+	//create array of pointer type Player
+	
 	for(int i=1; i<=players; i++) {
 		cout<<"Enter Name of Player " <<i<<": "<<std::flush;
 		cin>>name;
 		cin.ignore(256, '\n' );
-		Player playeri = Player(name, i);
+		//populate array slot with player 
 	}
 	
 	/*while(!Rules.gameOver()) {
@@ -65,7 +64,7 @@ int main() {
 			
 		}
 		
-	}*/
+	}
 
 	return 0;	
 }
