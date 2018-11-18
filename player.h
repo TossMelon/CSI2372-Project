@@ -1,4 +1,6 @@
 /* 
+	player.h
+	
 	CSI 2372 Project
 	Memory Card Game - Memoarrr!
 	
@@ -22,11 +24,18 @@ class Reward;
 using std::ostream;
 using std::string;
 
+enum Side {
+	TOP,
+	BOTTOM,
+	LEFT,
+	RIGHT
+};
+
 class Player
 {
 	private:
 		string name;
-		char boardSide;
+		Side boardSide;
 		int rubies;
 		bool status;
 		static bool ENDGAME;
@@ -39,6 +48,8 @@ class Player
 		int getNRubies() const;
 		void addReward(const Reward&);
 		void setDisplayMode(bool endOfGame);
+		Side getSide();
+		void setSide(Side side);
 		friend ostream& operator<<(ostream&, const Player&);
 };
 
