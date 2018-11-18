@@ -1,4 +1,6 @@
 /* 
+	player.cpp
+	
 	CSI 2372 Project
 	Memory Card Game - Memoarrr!
 	
@@ -24,7 +26,7 @@ bool Player::ENDGAME = false;
 //Player Constructor
 Player::Player(string nameIn) {
 	name = nameIn;
-	boardSide = 'B';
+	boardSide = BOTTOM;
 	rubies = 0;
 	status = true;
 }
@@ -33,13 +35,13 @@ Player::Player(string nameIn, int playerNumber) {
 	name = nameIn;
 	
 	if(playerNumber == 1) {
-		boardSide = 'B';
+		boardSide = BOTTOM;
 	} else if(playerNumber == 2) {
-		boardSide = 'T';
+		boardSide = TOP;
 	} else if(playerNumber == 3) {
-		boardSide = 'L';
+		boardSide = LEFT;
 	} else {
-		boardSide = 'R';
+		boardSide = RIGHT;
 	}
 	
 	rubies = 0;
@@ -75,6 +77,16 @@ void Player::addReward(const Reward&) {
 //
 void Player::setDisplayMode(bool endOfGame) {
 	ENDGAME = endOfGame;
+}
+
+//Returns side of board which player is on
+Side getSide() {
+	return boardSide;
+}
+
+//Assign player to side of gameboard
+void setSide(Side side) {
+	boardSide = side;
 }
 
 //Overload stream insertion operator
