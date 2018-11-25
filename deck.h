@@ -15,9 +15,16 @@
 #ifndef DECK_H
 #define DECK_H
 
+struct node {
+	Card data;
+	node *next;
+};
+
 template <class C> class Deck {
-	C *next;
 	private:
+		node *head, *current;
+		head = NULL;
+		current = head;
 		Deck();
 	public:
 		void shuffle();
