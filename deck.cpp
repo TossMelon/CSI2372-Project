@@ -25,7 +25,7 @@ void Deck<C>::shuffle() {
 //Return nullptr if no more cards/rewards are available
 template <class C>
 C* Deck<C>::getNext() {
-	card.next;
+	return current->next;
 }
 
 //Returns true if the deck is empty
