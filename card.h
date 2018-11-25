@@ -12,15 +12,24 @@
 
 #ifndef CARD_H
 #define CARD_H
-
+enum FaceAnimal{
+	Crab, Penguin, Octopus, Turtle, Walrus
+};
+enum FaceBackground{
+	Red, Green, Purple, Blue, Yellow
+};
 class Card
 {
-	char face, colour;
+	FaceAnimal face;
+	FaceBackground colour;
+	
 	private:
-		Card(char faceIn, char colourIn); //Card constructor
+		Card(FaceAnimal, FaceBackground); //Card constructor
 	public:
-		string row(int rowNum);
+		string row(int);
 		void print();
+		
+		
 };
 
 #endif
