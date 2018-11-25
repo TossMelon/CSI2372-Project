@@ -19,9 +19,9 @@ using std::cout;
 using std::endl;
 
 //Card Constructor
-Card::Card( char faceIn, char colourIn) {
+Card::Card(FaceAnimal faceIn, FaceBackground backIn) {
 	face = faceIn;
-	colour = colourIn;
+	colour = backIn;
 }
 
 //Returns a string for correspond rowNum of card
