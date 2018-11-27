@@ -13,6 +13,7 @@
 */
 
 #include "rewarddeck.h"
+#include "deck.h"
 
 Deck<Reward> rDeck; //Create variable to hold reward deck
 bool rExist = false; //false --> reward deck has not yet been made
@@ -36,4 +37,6 @@ static RewardDeck& make_RewardDeck() {
 		//Reward deck now exists, disallows anymore reward decks from being formed this game
 		rExist = true;
 	}
+	
+	return rDeck;
 }
