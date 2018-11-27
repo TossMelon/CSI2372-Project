@@ -13,6 +13,7 @@
 */
 
 #include "carddeck.h"
+#include "deck.h"
 
 Deck<Card> cDeck; //Create variable to hold card deck
 bool cExist = false; //false --> carddeck has not yet been made
@@ -62,4 +63,6 @@ static CardDeck& make_CardDeck() {
 		//Card deck now exists, disallows anymore card decks from being formed this game
 		cExist == true;
 	}
+	
+	reutrn cDeck;
 }
