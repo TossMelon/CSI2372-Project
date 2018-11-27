@@ -14,14 +14,26 @@
 
 #include "rewarddeck.h"
 
-template <class Reward>
-//Private RewardDeck Constructor
-RewardDeck<Reward>::RewardDeck() {
-	
-}
+Deck<Reward> rDeck; //Create variable to hold reward deck
+bool rExist = false; //false --> reward deck has not yet been made
 
+//Makes reward deck with appropriate cards
 template <class Reward>
 static RewardDeck& make_RewardDeck() {
-	
+	if(rExist == false) {
+		//Create and add all reward cards to reward deck
+		rDeck.myvector.push_back(new Reward(1));
+		rDeck.myvector.push_back(new Reward(1));
+		rDeck.myvector.push_back(new Reward(1));
+		rDeck.myvector.push_back(new Reward(2));
+		rDeck.myvector.push_back(new Reward(2));
+		rDeck.myvector.push_back(new Reward(3));
+		rDeck.myvector.push_back(new Reward(4));
+		
+		//Shuffle reward deck
+		rDeck.shuffle();
+		
+		//Reward deck now exists, disallows anymore reward decks from being formed this game
+		rExist = true;
+	}
 }
-
