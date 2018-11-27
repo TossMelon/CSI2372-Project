@@ -15,15 +15,9 @@
 #ifndef CARDDECK_H
 #define CARDDECK_H
 
-#include "deck.h"
+#include "card.h"
 
-class CardDeck {
-	Deck<Card*> card;
-	int nCards;
-	int nTypes;
-	
-	private:
-		CardDeck();
+class CardDeck: public Card {
 	public:
 		static CardDeck& make_CardDeck();
 };
