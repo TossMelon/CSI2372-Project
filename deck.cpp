@@ -13,19 +13,27 @@
 */
 
 #include "deck.h"
+
 #include <algorithm>
+#include <vector>
 
 //Shuffles the cards in the deck
 template <class C>
 void Deck<C>::shuffle() {
-	std::random_shuffle(card.begin(), card.end());
+	std::random_shuffle(myvector.begin(), myvector.end());
+	it = myvector.begin();
 }
 
-//Returns the next card or reward by pointer
-//Return nullptr if no more cards/rewards are available
+//Return the next card by pointer
+//Return nullptr if no more cards are available
 template <class C>
 C* Deck<C>::getNext() {
-	return current->next;
+	if(it == myvector.end()) {
+		return nullptr;
+	}
+	
+	++it;
+	return *it;
 }
 
 //Returns true if the deck is empty
@@ -36,5 +44,3 @@ bool Deck<C>::isEmpty() const {
 	}
 	return false;
 }
-
-
