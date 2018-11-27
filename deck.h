@@ -15,17 +15,12 @@
 #ifndef DECK_H
 #define DECK_H
 
-struct node {
-	Card data;
-	node *next;
-};
+#include <vector>
 
 template <class C> class Deck {
-	private:
-		node *head, *current;
-		head = NULL;
-		current = head;
-		Deck();
+	std::vector<C> myvector;
+	typename std::vector<C>::iterator it;
+
 	public:
 		void shuffle();
 		C* getNext();
