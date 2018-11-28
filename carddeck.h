@@ -15,9 +15,10 @@
 #ifndef CARDDECK_H
 #define CARDDECK_H
 
+#include "deck.h"
 #include "card.h"
 
-class CardDeck: public Card {
+class CardDeck: public Deck<Card> {
 	public:
 		static CardDeck& make_CardDeck();
 };
