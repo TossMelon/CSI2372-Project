@@ -18,9 +18,12 @@
 #include <vector>
 
 template <class C> class Deck {
+	friend class CardDeck;
 	std::vector<C> myvector;
 	typename std::vector<C>::iterator it;
-
+	
+	private:
+		void addCard(C card);
 	public:
 		void shuffle();
 		C* getNext();
