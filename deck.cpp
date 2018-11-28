@@ -13,7 +13,7 @@
 */
 
 #include "deck.h"
-
+#include <iostream>
 #include <algorithm>
 #include <vector>
 
@@ -31,16 +31,19 @@ C* Deck<C>::getNext() {
 	if(it == myvector.end()) {
 		return nullptr;
 	}
-	
-	++it;
-	return *it;
+	std::cout<<"SUCCESS!"<<std::endl;
+	//++it;
+	C* c = &(*it);
+	return c;
 }
 
 //Returns true if the deck is empty
 template <class C>
 bool Deck<C>::isEmpty() const {
-	if(this.getNext() == nullptr) {
-		return true;
-	}
-	return false;
+	return myvector.empty();
+}
+
+template <class C>
+void Deck<C>::addCard(C card) {
+	myvector.push_back(card);
 }
