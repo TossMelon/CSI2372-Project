@@ -11,58 +11,53 @@
 	Member 2: Matthew Choi
 	Student Number: 8250803
 */
-
+#include <iostream>
 #include "carddeck.h"
-#include "deck.h"
+#include "deck.cpp"
+#include "card.cpp"
 
-Deck<Card> cDeck; //Create variable to hold card deck
-bool cExist = false; //false --> carddeck has not yet been made
+CardDeck cDeck; //Create variable to hold card deck
 
 //Makes card deck with appropriate cards
-template <class Card>
-static CardDeck& make_CardDeck() {
-	if(cExist == false) {
+CardDeck& CardDeck::make_CardDeck() {
+	if(cDeck.isEmpty()) {
 		//Create and add all 5 Crab cards to card deck
-		cDeck.myvector.push_back(new Card('C','r'));
-		cDeck.myvector.push_back(new Card('C','g'));
-		cDeck.myvector.push_back(new Card('C','p'));
-		cDeck.myvector.push_back(new Card('C','b'));
-		cDeck.myvector.push_back(new Card('C','y'));
+		cDeck.addCard(Card(FaceAnimal::Crab,FaceBackground::Red));
+		cDeck.addCard(Card(FaceAnimal::Crab,FaceBackground::Green));
+		cDeck.addCard(Card(FaceAnimal::Crab,FaceBackground::Purple));
+		cDeck.addCard(Card(FaceAnimal::Crab,FaceBackground::Blue));
+		cDeck.addCard(Card(FaceAnimal::Crab,FaceBackground::Yellow));
 		
 		//Create and add all 5 Penguin cards to card deck
-		cDeck.myvector.push_back(new Card('P','r'));
-		cDeck.myvector.push_back(new Card('P','g'));
-		cDeck.myvector.push_back(new Card('P','p'));
-		cDeck.myvector.push_back(new Card('P','b'));
-		cDeck.myvector.push_back(new Card('P','y'));
+		cDeck.addCard(Card(FaceAnimal::Penguin,FaceBackground::Red));
+		cDeck.addCard(Card(FaceAnimal::Penguin,FaceBackground::Green));
+		cDeck.addCard(Card(FaceAnimal::Penguin,FaceBackground::Purple));
+		cDeck.addCard(Card(FaceAnimal::Penguin,FaceBackground::Blue));
+		cDeck.addCard(Card(FaceAnimal::Penguin,FaceBackground::Yellow));
 		
 		//Create and add all 5 Octopus cards to card deck
-		cDeck.myvector.push_back(new Card('O','r'));
-		cDeck.myvector.push_back(new Card('O','g'));
-		cDeck.myvector.push_back(new Card('O','p'));
-		cDeck.myvector.push_back(new Card('O','b'));
-		cDeck.myvector.push_back(new Card('O','y'));
+		cDeck.addCard(Card(FaceAnimal::Octopus,FaceBackground::Red));
+		cDeck.addCard(Card(FaceAnimal::Octopus,FaceBackground::Green));
+		cDeck.addCard(Card(FaceAnimal::Octopus,FaceBackground::Purple));
+		cDeck.addCard(Card(FaceAnimal::Octopus,FaceBackground::Blue));
+		cDeck.addCard(Card(FaceAnimal::Octopus,FaceBackground::Yellow));
 		
 		//Create and add all 5 Turtle cards to card deck
-		cDeck.myvector.push_back(new Card('T','r'));
-		cDeck.myvector.push_back(new Card('T','g'));
-		cDeck.myvector.push_back(new Card('T','p'));
-		cDeck.myvector.push_back(new Card('T','b'));
-		cDeck.myvector.push_back(new Card('T','y'));
+		cDeck.addCard(Card(FaceAnimal::Turtle,FaceBackground::Red));
+		cDeck.addCard(Card(FaceAnimal::Turtle,FaceBackground::Green));
+		cDeck.addCard(Card(FaceAnimal::Turtle,FaceBackground::Purple));
+		cDeck.addCard(Card(FaceAnimal::Turtle,FaceBackground::Blue));
+		cDeck.addCard(Card(FaceAnimal::Turtle,FaceBackground::Yellow));
 		
 		//Create and add all 5 Walrus cards to card deck
-		cDeck.myvector.push_back(new Card('W','r'));
-		cDeck.myvector.push_back(new Card('W','g'));
-		cDeck.myvector.push_back(new Card('W','p'));
-		cDeck.myvector.push_back(new Card('W','b'));
-		cDeck.myvector.push_back(new Card('W','y'));
+		cDeck.addCard(Card(FaceAnimal::Walrus,FaceBackground::Red));
+		cDeck.addCard(Card(FaceAnimal::Walrus,FaceBackground::Green));
+		cDeck.addCard(Card(FaceAnimal::Walrus,FaceBackground::Purple));
+		cDeck.addCard(Card(FaceAnimal::Walrus,FaceBackground::Blue));
+		cDeck.addCard(Card(FaceAnimal::Walrus,FaceBackground::Yellow));
 		
 		//Shuffle card deck
 		cDeck.shuffle();
-		
-		//Card deck now exists, disallows anymore card decks from being formed this game
-		cExist == true;
 	}
-	
-	reutrn cDeck;
+	return cDeck;
 }
