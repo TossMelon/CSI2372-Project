@@ -1,4 +1,6 @@
 /* 
+	rewarddeck.h
+	
 	CSI 2372 Project
 	Memory Card Game - Memoarrr!
 	
@@ -10,20 +12,15 @@
 	Student Number: 8250803
 */
 
-#ifndef REWARD_H
-#define REWARD_H
+#ifndef REWARDDECK_H
+#define REWARDDECK_H
 
-#include <iostream>
+#include "deck.h"
+#include "reward.h"
 
-using std::ostream;
-
-class Reward
-{
-	private:
-		Reward(); //Reward constructor
+class RewardDeck: public Deck<Reward> {
 	public:
-		friend ostream &operator << (ostream &out, const Reward &r);
-	
+		static RewardDeck& make_RewardDeck();
 };
 
 #endif
