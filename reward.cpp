@@ -1,4 +1,6 @@
 /* 
+	reward.h
+	
 	CSI 2372 Project
 	Memory Card Game - Memoarrr!
 	
@@ -10,15 +12,22 @@
 	Student Number: 8250803
 */
 
-#include "reward.h"
+#ifndef REWARD_H
+#define REWARD_H
 
-Reward::Reward() {
-	
-}
+#include <iostream>
 
-//Overload stream insertion operator
-//Displays Reward
-ostream &operator << (ostream &out, const Reward &r) {
+using std::ostream;
+
+class Reward
+{
+	friend class RewardDeck;
+	private:
+		int reward;
+		Reward(int r); //Reward constructor
+	public:
+		friend ostream &operator << (ostream &out, const Reward &r);
 	
-	return out;
-}
+};
+
+#endif
