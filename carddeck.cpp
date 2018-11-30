@@ -11,7 +11,7 @@
 	Member 2: Matthew Choi
 	Student Number: 8250803
 */
-#include <iostream>
+
 #include "carddeck.h"
 #include "deck.cpp"
 #include "card.cpp"
