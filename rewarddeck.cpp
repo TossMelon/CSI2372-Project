@@ -16,8 +16,6 @@
 #include "deck.cpp"
 #include "reward.cpp"
 
-#include <iostream>
-
 RewardDeck rDeck; //Create variable to hold reward deck
 
 //Makes reward deck with appropriate cards
@@ -28,7 +26,7 @@ RewardDeck& RewardDeck::make_RewardDeck() {
 		rDeck.addCard(Reward(1));
 		rDeck.addCard(Reward(1));
 		rDeck.addCard(Reward(2));
-		rDeck.myvector.push_back(Reward(2));
+		rDeck.addCard(Reward(2));
 		rDeck.addCard(Reward(3));
 		rDeck.addCard(Reward(4));
 		
