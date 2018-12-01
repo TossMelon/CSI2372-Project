@@ -17,10 +17,15 @@
 
 #include <vector>
 
-template <class C> class Deck {
+using std::vector;
+
+template <class C>
+class Deck {
 	friend class CardDeck;
-	std::vector<C> myvector;
-	typename std::vector<C>::iterator it;
+	friend class RewardDeck;
+	
+	vector<C> myvector;
+	typename vector<C>::iterator it;
 	
 	private:
 		void addCard(C card);
