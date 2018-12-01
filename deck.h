@@ -26,9 +26,7 @@ class Deck {
 	
 	vector<C> myvector;
 	typename vector<C>::iterator it;
-	
-	private:
-		void addCard(C card);
+
 	public:
 		void shuffle();
 		C* getNext();
