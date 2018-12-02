@@ -25,10 +25,7 @@ using std::ostream;
 using std::string;
 
 enum Side {
-	TOP,
-	BOTTOM,
-	LEFT,
-	RIGHT
+	Top, Bottom, Left, Right
 };
 
 class Player
@@ -40,17 +37,16 @@ class Player
 		bool status;
 		static bool ENDGAME;
 	public:
-		Player(string nameIn);
 		Player(string nameIn, int playerNumber); //Player constructor
 		string getName() const;
 		void setActive(bool s);
 		bool isActive() const;
 		int getNRubies() const;
-		void addReward(const Reward&);
+		void addReward(const Reward& r);
 		void setDisplayMode(bool endOfGame);
 		Side getSide();
 		void setSide(Side side);
-		friend ostream& operator<<(ostream&, const Player&);
+		friend ostream& operator<<(ostream& out, const Player& p);
 };
 
 #endif
