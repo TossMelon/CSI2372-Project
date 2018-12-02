@@ -13,26 +13,26 @@
 */
 
 #include "rewarddeck.h"
-#include "deck.cpp"
-#include "reward.cpp"
+#include "deck.h"
+#include "reward.h"
 
 RewardDeck rDeck; //Create variable to hold reward deck
 
-//Makes reward deck with appropriate cards
+//If no reward deck exists, make deck with appropriate cards
+//Else return existing deck
 RewardDeck& RewardDeck::make_RewardDeck() {
 	if(rDeck.isEmpty()) {
 		//Create and add all reward cards to reward deck
-		rDeck.addCard(Reward(1));
-		rDeck.addCard(Reward(1));
-		rDeck.addCard(Reward(1));
-		rDeck.addCard(Reward(2));
-		rDeck.addCard(Reward(2));
-		rDeck.addCard(Reward(3));
-		rDeck.addCard(Reward(4));
+		rDeck.myvector.push_back(Reward(Rubies::One));
+		rDeck.myvector.push_back(Reward(Rubies::One));
+		rDeck.myvector.push_back(Reward(Rubies::One));
+		rDeck.myvector.push_back(Reward(Rubies::Two));
+		rDeck.myvector.push_back(Reward(Rubies::Two));
+		rDeck.myvector.push_back(Reward(Rubies::Three));
+		rDeck.myvector.push_back(Reward(Rubies::Four));
 		
 		//Shuffle reward deck
 		rDeck.shuffle();
 	}
-	
 	return rDeck;
 }
