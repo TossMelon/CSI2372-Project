@@ -1,5 +1,5 @@
 /* 
-	rewarddeck.cpp
+	reward.cpp
 	
 	CSI 2372 Project
 	Memory Card Game - Memoarrr!
@@ -12,29 +12,32 @@
 	Student Number: 8250803
 */
 
-#include "rewarddeck.h"
-#include "deck.cpp"
-#include "reward.cpp"
+#include "reward.h"
 
-#include <iostream>
+//Reward constructor
+Reward::Reward(Rubies r) {
+	rubies = r;
+}
 
-RewardDeck rDeck; //Create variable to hold reward deck
-
-//Makes reward deck with appropriate cards
-RewardDeck& RewardDeck::make_RewardDeck() {
-	if(rDeck.isEmpty()) {
-		//Create and add all reward cards to reward deck
-		rDeck.addCard(Reward(1));
-		rDeck.addCard(Reward(1));
-		rDeck.addCard(Reward(1));
-		rDeck.addCard(Reward(2));
-		rDeck.myvector.push_back(Reward(2));
-		rDeck.addCard(Reward(3));
-		rDeck.addCard(Reward(4));
-		
-		//Shuffle reward deck
-		rDeck.shuffle();
+Reward::operator int() const {
+	switch(rubies) {
+		case One:
+			return 1;
+			break;
+		case Two:
+			return 2;
+			break;
+		case Three:
+			return 3;
+			break;
+		case Four:
+			return 4;
+			break;
 	}
-	
-	return rDeck;
+}
+
+//Overload stream insertion operator
+//Displays Reward
+ostream &operator << (ostream &out, const Reward &r) {
+	return out<<static_cast<int>(r);
 }
