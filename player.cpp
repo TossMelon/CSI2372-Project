@@ -23,25 +23,19 @@ using std::ostream;
 using std::string;
 
 bool Player::ENDGAME = false;
-//Player Constructor
-Player::Player(string nameIn) {
-	name = nameIn;
-	boardSide = BOTTOM;
-	rubies = 0;
-	status = true;
-}
 
+//Player Constructor
 Player::Player(string nameIn, int playerNumber) {
 	name = nameIn;
 	
 	if(playerNumber == 1) {
-		boardSide = BOTTOM;
+		this->setSide(Bottom);
 	} else if(playerNumber == 2) {
-		boardSide = TOP;
+		this->setSide(Top);
 	} else if(playerNumber == 3) {
-		boardSide = LEFT;
+		this->setSide(Left);
 	} else {
-		boardSide = RIGHT;
+		this->setSide(Right);
 	}
 	
 	rubies = 0;
@@ -54,7 +48,7 @@ string Player::getName() const {
 }
 
 //Set Player status as active or inactive
-//if status == true player is active, if status == false player is inactive
+//If status == true player is active, if status == false player is inactive
 void Player::setActive(bool s) {
 	status = s;
 }
@@ -70,27 +64,27 @@ int Player::getNRubies() const {
 }
 
 //Add a reward with a given number of rubies
-void Player::addReward(const Reward&) {
-	rubies = rubies + 10; //sub 10 with ruby value from Reward
+void Player::addReward(const Reward& r) {
+	rubies = rubies + r;
 }
 
-//
+//Set display mode for player output
 void Player::setDisplayMode(bool endOfGame) {
 	ENDGAME = endOfGame;
 }
 
 //Returns side of board which player is on
-Side getSide() {
+Side Player::getSide() {
 	return boardSide;
 }
 
 //Assign player to side of gameboard
-void setSide(Side side) {
+void Player::setSide(Side side) {
 	boardSide = side;
 }
 
 //Overload stream insertion operator
-//Displays Player stats based on endOfGame condition
+//Displays Player stats based on ENDGAME condition
 ostream& operator<<(ostream& out, const Player& p) {
 	if(Player::ENDGAME == false) {
 		if(p.isActive()){
