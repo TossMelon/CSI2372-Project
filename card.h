@@ -12,19 +12,26 @@
 
 #ifndef CARD_H
 #define CARD_H
+
+#include <string>
+
+using namespace std;
+
 enum FaceAnimal{
 	Crab, Penguin, Octopus, Turtle, Walrus
 };
 enum FaceBackground{
 	Red, Green, Purple, Blue, Yellow
 };
+
+static const char* AnimalEnum[] = {"C", "P", "O", "T", "W"};
+static const char* BackEnum[] = {"R", "G", "P", "B", "Y"};
+
 class Card
 {
 	FaceAnimal face;
 	FaceBackground colour;
-	
-	private:
-		Card(FaceAnimal, FaceBackground); //Card constructor
+	Card(FaceAnimal, FaceBackground); //Card constructor
 	public:
 		string row(int);
 		void print();

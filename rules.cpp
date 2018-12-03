@@ -17,7 +17,7 @@ Rules::Rules() {
 }
 
 //Returns true if previous and current cards match, false otherwise
-bool isValid(const Game& g) {
+ const bool Rules::isValid(const Game& g) {
 	if(g.getPreviousCard() == g.getCurrentCard()) {
 		return true;
 	}	

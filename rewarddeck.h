@@ -15,10 +15,9 @@
 #ifndef REWARDDECK_H
 #define REWARDDECK_H
 
-#include "deck.h"
 #include "reward.h"
 
-class RewardDeck: public Deck<Reward> {
+class RewardDeck: public Reward {
 	public:
 		static RewardDeck& make_RewardDeck();
 };

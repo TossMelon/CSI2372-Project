@@ -21,7 +21,7 @@ class Rules
 {
 	public:
 		Rules(); //Rules constructor
-		bool isValid(const Game& g);
+		const bool isValid(const Game& g);
 		bool gameOver(const Game& g);
 		bool roundOver(const Game& g);
 };

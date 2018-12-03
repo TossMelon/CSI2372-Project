@@ -13,25 +13,28 @@
 #ifndef GAME_H
 #define GAME_H
 
-#include "board.h"
-#include "card.h"
+
 
 #include <iostream>
 
-//Aggregate
-class Player;
+#include "board.h"
+#include "card.h"
+#include "player.h"
+#include "carddeck.h"
 
 using std::ostream;
+
 
 class Game
 {
 	Board b;
-	int round;
+	int round, numPlayers;
+	Player *playerArray;
 	public:
 		Game(); //Game constructor
 		int getRound();
 		void addPlayer(const Player&);
-		Player& getNextPlayer();
+		Player& getNextPlayer(Side);
 		const Card* getPreviousCard();
 		const Card* getCurrentCard();
 		void setCurrentCard(const Card*);

@@ -10,9 +10,10 @@
 	Student Number: 8250803
 */
 
-#include "game.h"
+
 
 #include <iostream>
+#include "game.h"
 
 using std::endl;
 using std::ostream;
@@ -20,6 +21,7 @@ using std::ostream;
 //Game constructor
 Game::Game() {
 	round = 0;
+	playerArray = new Player[4]{Player(""), Player(""), Player(""), Player("")};
 }
 
 //Return number [0 - 6] corresponding to current round of game
@@ -28,23 +30,27 @@ int Game::getRound() {
 }
 
 //Add Player to current game
-void Game::addPlayer(const Player&) {
-	
+void Game::addPlayer(const Player& p) {
+	playerArray[numPlayers] = p;
+	numPlayers++;
 }
 
 //Return player
-Player& Game::getNextPlayer() {
-	
+Player& Game::getNextPlayer(Side side) { //side input is for NEXT player
+	for(int i = 0; i < 4; i++){
+		if(playerArray[i].getSide() == side){
+			return playerArray[i];
+		}
+	}
 }
 
 //Return previous card selected
-const Card* Game::getPreviousCard() {
+const Card* Game::getPreviousCard() {//how the fuck do i do this??????
 	
 }
 
 //Return current card selected
 const Card* Game::getCurrentCard() {
-	
 }
 
 //Sets current card to passed argument (Card*)

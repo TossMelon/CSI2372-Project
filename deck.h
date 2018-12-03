@@ -17,15 +17,9 @@
 
 #include <vector>
 
-using std::vector;
-
-template <class C>
-class Deck {
-	friend class CardDeck;
-	friend class RewardDeck;
-	
-	vector<C> myvector;
-	typename vector<C>::iterator it;
+template <class C> class Deck {
+	std::vector<C> myvector;
+	typename std::vector<C>::iterator it;
 
 	public:
 		void shuffle();
