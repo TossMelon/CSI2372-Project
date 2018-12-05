@@ -13,17 +13,19 @@
 #ifndef RULES_H
 #define RULES_H
 
-//Aggregate
-class Game;
+#include "game.cpp"
+#include "player.h"
 
 //Check if a selection of a player is valid
 class Rules
 {
+	int playerCounter;
 	public:
 		Rules(); //Rules constructor
 		bool isValid(const Game& g);
 		bool gameOver(const Game& g);
 		bool roundOver(const Game& g);
+		const Player& getNextPlayer(const Game& g);
 };
 
 #endif
