@@ -1,4 +1,6 @@
 /* 
+	card.h
+	
 	CSI 2372 Project
 	Memory Card Game - Memoarrr!
 	
@@ -12,24 +14,37 @@
 
 #ifndef CARD_H
 #define CARD_H
+
+#include <string>
+#include <iostream>
+
+using std::ostream;
+using std::string;
+
 enum FaceAnimal{
 	Crab, Penguin, Octopus, Turtle, Walrus
 };
+
 enum FaceBackground{
 	Red, Green, Purple, Blue, Yellow
 };
+
 class Card
 {
+	friend class CardDeck;
+	
 	FaceAnimal face;
 	FaceBackground colour;
+	char charFace;
+	char charColour;
+	int nRows;
 	
-	private:
-		Card(FaceAnimal, FaceBackground); //Card constructor
+	Card(FaceAnimal, FaceBackground); //Card constructor
+	string operator()(int) const;
+	
 	public:
-		string row(int);
-		void print();
-		
-		
+		int getNRows() const;
+		friend ostream& operator<<(ostream&, const Card&);
 };
 
 #endif
