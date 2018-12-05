@@ -23,19 +23,25 @@ using std::ostream;
 using std::string;
 
 bool Player::ENDGAME = false;
-
 //Player Constructor
+Player::Player(string nameIn) {
+	name = nameIn;
+	boardSide = BOTTOM;
+	rubies = 0;
+	status = true;
+}
+
 Player::Player(string nameIn, int playerNumber) {
 	name = nameIn;
 	
 	if(playerNumber == 1) {
-		this->setSide(Bottom);
+		boardSide = BOTTOM;
 	} else if(playerNumber == 2) {
-		this->setSide(Top);
+		boardSide = TOP;
 	} else if(playerNumber == 3) {
-		this->setSide(Left);
+		boardSide = LEFT;
 	} else {
-		this->setSide(Right);
+		boardSide = RIGHT;
 	}
 	
 	rubies = 0;
@@ -48,7 +54,7 @@ string Player::getName() const {
 }
 
 //Set Player status as active or inactive
-//If status == true player is active, if status == false player is inactive
+//if status == true player is active, if status == false player is inactive
 void Player::setActive(bool s) {
 	status = s;
 }
@@ -64,11 +70,11 @@ int Player::getNRubies() const {
 }
 
 //Add a reward with a given number of rubies
-void Player::addReward(const Reward& r) {
-	rubies = rubies + r;
+void Player::addReward(const Reward&) {
+	rubies = rubies + 10; //sub 10 with ruby value from Reward
 }
 
-//Set display mode for player output
+//
 void Player::setDisplayMode(bool endOfGame) {
 	ENDGAME = endOfGame;
 }
@@ -84,7 +90,7 @@ void Player::setSide(Side side) {
 }
 
 //Overload stream insertion operator
-//Displays Player stats based on ENDGAME condition
+//Displays Player stats based on endOfGame condition
 ostream& operator<<(ostream& out, const Player& p) {
 	if(Player::ENDGAME == false) {
 		if(p.isActive()){

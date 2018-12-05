@@ -16,22 +16,31 @@
 #include <iostream>
 #include <string>
 #include <array>
+#include "card.h"
+#include "carddeck.h"
 
-//Aggregates
-class Letter;
-class Number;
+enum Letter{
+	A, B, C, D, E
+};
+enum Number{
+	One, Two, Three, Four, Five
+};
 
 using std::ostream;
 using std::string;
 
 class Board
 {
-	string d[];
+	string** strArray;
+	CardDeck* cDeck;
+	
 	public:
 		Board(); //Board constructor
 		bool isFaceUp(const Letter&, const Number&);
 		bool turnFaceUp(const Letter&, const Number&);
 		bool turnFaceDown(const Letter&, const Number&);
+		Card* getCard(const Letter&, const Number&);
+		void setCard(const Letter&, const Number&, Card*);
 		void reset();
 		friend ostream &operator<<(ostream &out, const Board &b);
 };

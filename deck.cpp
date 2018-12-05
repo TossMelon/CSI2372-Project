@@ -13,20 +13,15 @@
 */
 
 #include "deck.h"
-#include <algorithm> //random_shuffle
-#include <vector>
-#include <stdlib.h> //srand
-#include <time.h> //time
 
-using std::random_shuffle;
-using std::srand;
+#include <algorithm>
+#include <vector>
 
 //Shuffles the cards in the deck
 template <class C>
 void Deck<C>::shuffle() {
-	srand(time(0)); //set seed 
-	random_shuffle(myvector.begin(), myvector.end()); //shuffle deck
-	it = myvector.begin(); //set pointer to first card in deck
+	std::random_shuffle(myvector.begin(), myvector.end());
+	it = myvector.begin();
 }
 
 //Return the next card by pointer
@@ -37,11 +32,15 @@ C* Deck<C>::getNext() {
 		return nullptr;
 	}
 	
-	return &(*it++);
+	++it;
+	return *it;
 }
 
 //Returns true if the deck is empty
 template <class C>
 bool Deck<C>::isEmpty() const {
-	return myvector.empty();
+	if(this.getNext() == nullptr) {
+		return true;
+	}
+	return false;
 }

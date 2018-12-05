@@ -1,6 +1,4 @@
 /* 
-	reward.h
-	
 	CSI 2372 Project
 	Memory Card Game - Memoarrr!
 	
@@ -19,19 +17,12 @@
 
 using std::ostream;
 
-enum Rubies {
-	One, Two, Three, Four
-};
-
 class Reward
 {
-	friend class RewardDeck;
 	private:
-		Rubies rubies;
-		Reward(Rubies rubies); //Reward constructor
+		Reward(); //Reward constructor
 	public:
-		operator int() const; //Conversion operator
-		friend ostream &operator << (ostream &out, const Reward &r); //Ostream operator
+		friend ostream &operator << (ostream &out, const Reward &r);
 	
 };
 

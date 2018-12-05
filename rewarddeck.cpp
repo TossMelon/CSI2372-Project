@@ -14,25 +14,29 @@
 
 #include "rewarddeck.h"
 #include "deck.h"
-#include "reward.h"
 
-RewardDeck rDeck; //Create variable to hold reward deck
+Deck<Reward> rDeck; //Create variable to hold reward deck
+bool rExist = false; //false --> reward deck has not yet been made
 
-//If no reward deck exists, make deck with appropriate cards
-//Else return existing deck
-RewardDeck& RewardDeck::make_RewardDeck() {
-	if(rDeck.isEmpty()) {
+//Makes reward deck with appropriate cards
+template <class Reward>
+static RewardDeck& make_RewardDeck() {
+	if(rExist == false) {
 		//Create and add all reward cards to reward deck
-		rDeck.myvector.push_back(Reward(Rubies::One));
-		rDeck.myvector.push_back(Reward(Rubies::One));
-		rDeck.myvector.push_back(Reward(Rubies::One));
-		rDeck.myvector.push_back(Reward(Rubies::Two));
-		rDeck.myvector.push_back(Reward(Rubies::Two));
-		rDeck.myvector.push_back(Reward(Rubies::Three));
-		rDeck.myvector.push_back(Reward(Rubies::Four));
+		rDeck.myvector.push_back(new Reward(1));
+		rDeck.myvector.push_back(new Reward(1));
+		rDeck.myvector.push_back(new Reward(1));
+		rDeck.myvector.push_back(new Reward(2));
+		rDeck.myvector.push_back(new Reward(2));
+		rDeck.myvector.push_back(new Reward(3));
+		rDeck.myvector.push_back(new Reward(4));
 		
 		//Shuffle reward deck
 		rDeck.shuffle();
+		
+		//Reward deck now exists, disallows anymore reward decks from being formed this game
+		rExist = true;
 	}
+	
 	return rDeck;
 }

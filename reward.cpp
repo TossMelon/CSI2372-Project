@@ -1,6 +1,4 @@
 /* 
-	reward.cpp
-	
 	CSI 2372 Project
 	Memory Card Game - Memoarrr!
 	
@@ -14,30 +12,13 @@
 
 #include "reward.h"
 
-//Reward constructor
-Reward::Reward(Rubies r) {
-	rubies = r;
-}
-
-Reward::operator int() const {
-	switch(rubies) {
-		case One:
-			return 1;
-			break;
-		case Two:
-			return 2;
-			break;
-		case Three:
-			return 3;
-			break;
-		case Four:
-			return 4;
-			break;
-	}
+Reward::Reward() {
+	
 }
 
 //Overload stream insertion operator
 //Displays Reward
 ostream &operator << (ostream &out, const Reward &r) {
-	return out<<static_cast<int>(r);
+	
+	return out;
 }
