@@ -1,4 +1,5 @@
 /* 
+
 	CSI 2372 Project
 	Memory Card Game - Memoarrr!
 	
@@ -13,13 +14,16 @@
 #ifndef RULES_H
 #define RULES_H
 
-#include "game.cpp"
+#include "game.h"
 #include "player.h"
 
 //Check if a selection of a player is valid
 class Rules
 {
 	int playerCounter;
+	char convert(FaceAnimal a) const;
+	char convert(FaceBackground b) const;
+	
 	public:
 		Rules(); //Rules constructor
 		bool isValid(const Game& g);
