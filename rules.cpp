@@ -1,6 +1,4 @@
 /*
-	rules.cpp
-
 	CSI 2372 Project
 	Memory Card Game - Memoarrr!
 
@@ -18,13 +16,65 @@ Rules::Rules() {
 	playerCounter = 1;
 }
 
+char Rules::convert(FaceAnimal a) const {
+	switch(a) {
+		case Crab:
+			return 'C';
+			break;
+		case Penguin:
+			return 'P';
+			break;
+		case Octopus:
+			return 'O';
+			break;
+		case Turtle:
+			return 'T';
+			break;
+		case Walrus:
+			return 'W';
+			break;
+	}
+}
+
+char Rules::convert(FaceBackground b) const {
+	switch(b) {
+		case Red:
+			return 'r';
+			break;
+		case Green:
+			return 'g';
+			break;
+		case Purple:
+			return 'p';
+			break;
+		case Blue:
+			return 'b';
+			break;
+		case Yellow:
+			return 'y';
+			break;
+	}
+}
+
 //Returns true if previous and current cards match, false otherwise
 bool Rules::isValid(const Game& g) {
-	/*const Card* prev = g.getPreviousCard();
-	if() {
+	const Card* prev = g.getPreviousCard();
+	const Card* curr = g.getCurrentCard();
+	char prevAnimal, prevColour, currAnimal, currColour;
+	
+	prevAnimal = convert((FaceAnimal)*prev);
+	prevColour = convert((FaceBackground)*prev);
+	
+	currAnimal = convert((FaceAnimal)*curr);
+	currColour = convert((FaceBackground)*curr);
+	
+	if(prevAnimal == currAnimal) {
 		return true;
-	}	*/
-	return false;
+	} else if (prevColour == currColour) {
+		return true;
+	} else {
+		return false;
+	}
 }
 
 //Returns true if the number of rounds has reached 7
