@@ -26,6 +26,7 @@ class Deck {
 	
 	vector<C> myvector;
 	typename vector<C>::iterator it;
+	int counter; //check if the getNext() method has been used once yet
 
 	public:
 		void shuffle();
