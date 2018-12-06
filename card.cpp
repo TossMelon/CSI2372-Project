@@ -28,41 +28,40 @@ Card::Card(FaceAnimal faceIn, FaceBackground backIn) {
 	nRows = 3;
 	
 	switch(face) {
-		case Crab:
+		case FaceAnimal::Crab:
 			charFace = 'C';
 			break;
-		case Penguin:
+		case FaceAnimal::Penguin:
 			charFace = 'P';
 			break;
-		case Octopus:
+		case FaceAnimal::Octopus:
 			charFace = 'O';
 			break;
-		case Turtle:
+		case FaceAnimal::Turtle:
 			charFace = 'T';
 			break;
-		case Walrus:
+		case FaceAnimal::Walrus:
 			charFace = 'W';
 			break;
 	}
 	
 	switch(colour) {
-		case Red:
+		case FaceBackground::Red:
 			charColour = 'r';
 			break;
-		case Green:
+		case FaceBackground::Green:
 			charColour = 'g';
 			break;
-		case Purple:
+		case FaceBackground::Purple:
 			charColour = 'p';
 			break;
-		case Blue:
+		case FaceBackground::Blue:
 			charColour = 'b';
 			break;
-		case Yellow:
+		case FaceBackground::Yellow:
 			charColour = 'y';
 			break;
 	}
-	
 }
 
 Card::operator FaceBackground() const {
