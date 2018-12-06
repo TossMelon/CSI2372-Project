@@ -21,13 +21,9 @@
 using std::ostream;
 using std::string;
 
-enum FaceAnimal{
-	Crab, Penguin, Octopus, Turtle, Walrus
-};
+enum class FaceAnimal{ Crab, Penguin, Octopus, Turtle, Walrus };
 
-enum FaceBackground{
-	Red, Green, Purple, Blue, Yellow
-};
+enum class FaceBackground { Red, Green, Purple, Blue, Yellow };
 
 class Card
 {
@@ -43,6 +39,8 @@ class Card
 	string operator()(int) const;
 	
 	public:
+		operator FaceBackground() const; //Conversion operator to FaceBackground
+		operator FaceAnimal() const; //Conversion operator to FaceAnimal
 		int getNRows() const;
 		friend ostream& operator<<(ostream&, const Card&);
 };
