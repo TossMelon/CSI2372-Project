@@ -27,17 +27,21 @@ void Deck<C>::shuffle() {
 	srand(time(0)); //set seed 
 	random_shuffle(myvector.begin(), myvector.end()); //shuffle deck
 	it = myvector.begin(); //set pointer to first card in deck
+	counter = 0;
 }
 
 //Return the next card by pointer
 //Return nullptr if no more cards are available
 template <class C>
 C* Deck<C>::getNext() {
-	if(it == myvector.end()) {
+	if(counter== 0) {
+		counter = 1;
+		return &(*it);
+	} else if (it == myvector.end()) {
 		return nullptr;
+	} else {
+		return &(*it++);	
 	}
-	
-	return &(*it++);
 }
 
 //Returns true if the deck is empty
