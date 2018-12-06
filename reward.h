@@ -19,9 +19,7 @@
 
 using std::ostream;
 
-enum Rubies {
-	One, Two, Three, Four
-};
+enum class Rubies { One, Two, Three, Four };
 
 class Reward
 {
@@ -32,7 +30,6 @@ class Reward
 	public:
 		operator int() const; //Conversion operator
 		friend ostream &operator << (ostream &out, const Reward &r); //Ostream operator
-	
 };
 
 #endif
