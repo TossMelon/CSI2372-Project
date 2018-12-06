@@ -1,19 +1,19 @@
-/* 
+/*
 	player.cpp
-	
+
 	CSI 2372 Project
 	Memory Card Game - Memoarrr!
-	
+
 	Group 36
 	Member 1: Huong Pham
 	Student Number: 7831858
-	
+
 	Member 2: Matthew Choi
 	Student Number: 8250803
 */
 
 #include "player.h"
-#include "reward.h"
+#include "reward.cpp"
 
 #include <iostream>
 #include <string>
@@ -27,17 +27,17 @@ bool Player::ENDGAME = false;
 //Player Constructor
 Player::Player(string nameIn, int playerNumber) {
 	name = nameIn;
-	
+
 	if(playerNumber == 1) {
-		this->setSide(Bottom);
+		this->setSide(Side::Bottom);
 	} else if(playerNumber == 2) {
-		this->setSide(Top);
+		this->setSide(Side::Top);
 	} else if(playerNumber == 3) {
-		this->setSide(Left);
+		this->setSide(Side::Left);
 	} else {
-		this->setSide(Right);
+		this->setSide(Side::Right);
 	}
-	
+
 	rubies = 0;
 	status = true;
 }
@@ -74,7 +74,7 @@ void Player::setDisplayMode(bool endOfGame) {
 }
 
 //Returns side of board which player is on
-Side Player::getSide() {
+Side Player::getSide() const {
 	return boardSide;
 }
 
@@ -84,17 +84,17 @@ void Player::setSide(Side side) {
 }
 
 //Overload stream insertion operator
-//Displays Player stats based on ENDGAME condition
+//Displays Player stats based on endOfGame condition
 ostream& operator<<(ostream& out, const Player& p) {
 	if(Player::ENDGAME == false) {
 		if(p.isActive()){
-			out << p.getName()<<": "<<p.boardSide<<" (active)"<<endl;
+			out << p.getName()<<": "<<static_cast<char>(p.getSide())<<" (active)"<<endl;
 		} else {
-			out << p.getName()<<": "<<p.boardSide<<" (inactive)"<<endl;
+			out << p.getName()<<": "<<static_cast<char>(p.getSide())<<" (inactive)"<<endl;
 		}
 	} else {
 		out<<p.getName()<<": "<<p.getNRubies()<<" rubies"<<endl;
 	}
-	
+
 	return out;
 }
