@@ -1,4 +1,6 @@
 /*
+	rules.cpp
+
 	CSI 2372 Project
 	Memory Card Game - Memoarrr!
 
@@ -12,65 +14,19 @@
 
 #include "rules.h"
 
-Rules::Rules() {
+Rules::Rules(int numPlayers) {
+	nPlayers = numPlayers;
 	playerCounter = 1;
-}
-
-char Rules::convert(FaceAnimal a) const {
-	switch(a) {
-		case Crab:
-			return 'C';
-			break;
-		case Penguin:
-			return 'P';
-			break;
-		case Octopus:
-			return 'O';
-			break;
-		case Turtle:
-			return 'T';
-			break;
-		case Walrus:
-			return 'W';
-			break;
-	}
-}
-
-char Rules::convert(FaceBackground b) const {
-	switch(b) {
-		case Red:
-			return 'r';
-			break;
-		case Green:
-			return 'g';
-			break;
-		case Purple:
-			return 'p';
-			break;
-		case Blue:
-			return 'b';
-			break;
-		case Yellow:
-			return 'y';
-			break;
-	}
 }
 
 //Returns true if previous and current cards match, false otherwise
 bool Rules::isValid(const Game& g) {
 	const Card* prev = g.getPreviousCard();
 	const Card* curr = g.getCurrentCard();
-	char prevAnimal, prevColour, currAnimal, currColour;
 	
-	prevAnimal = convert((FaceAnimal)*prev);
-	prevColour = convert((FaceBackground)*prev);
-	
-	currAnimal = convert((FaceAnimal)*curr);
-	currColour = convert((FaceBackground)*curr);
-	
-	if(prevAnimal == currAnimal) {
+	if( ((FaceAnimal)*prev) == ((FaceAnimal)*curr) ) {
 		return true;
-	} else if (prevColour == currColour) {
+	} else if ( ((FaceBackground)*prev) == ((FaceBackground)*curr) ) {
 		return true;
 	} else {
 		return false;
@@ -89,7 +45,7 @@ bool Rules::gameOver(const Game& g) {
 bool Rules::roundOver(const Game& g) {
 	int activeCounter = 0;
 	
-	for(int i=0; i<3; i++) {
+	for(int i=0; i<nPlayers; i++) {
 		const Player& p = getNextPlayer(g);
 		if(p.isActive() == true) {
 		activeCounter++;
@@ -108,19 +64,19 @@ bool Rules::roundOver(const Game& g) {
 //Return next player in the array of players
 const Player& Rules::getNextPlayer(const Game& g) {
 	if(playerCounter == 1) {
-		Player& p = g.getPlayer(Bottom);
+		Player& p = g.getPlayer(Side::Bottom);
 		playerCounter++;
 		return p;
 	} else if(playerCounter == 2) {
-		Player& p = g.getPlayer(Top);
+		Player& p = g.getPlayer(Side::Top);
 		playerCounter++;
 		return p;
 	} else if(playerCounter == 3) {
-		Player& p = g.getPlayer(Left);
+		Player& p = g.getPlayer(Side::Left);
 		playerCounter++;
 		return p;
 	} else {
-		Player& p = g.getPlayer(Right);
+		Player& p = g.getPlayer(Side::Right);
 		return p;
 	}
 }
