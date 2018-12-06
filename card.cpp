@@ -65,6 +65,14 @@ Card::Card(FaceAnimal faceIn, FaceBackground backIn) {
 	
 }
 
+Card::operator FaceBackground() const {
+	return colour;
+}
+
+Card::operator FaceAnimal() const {
+	return face;
+} 
+
 int Card::getNRows() const {
 	return nRows;
 }
