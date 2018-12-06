@@ -24,9 +24,7 @@ class Reward;
 using std::ostream;
 using std::string;
 
-enum Side {
-	Top, Bottom, Left, Right
-};
+enum class Side { Top, Bottom, Left, Right };
 
 class Player
 {
@@ -44,7 +42,7 @@ class Player
 		int getNRubies() const;
 		void addReward(const Reward& r);
 		void setDisplayMode(bool endOfGame);
-		Side getSide();
+		Side getSide() const;
 		void setSide(Side side);
 		friend ostream& operator<<(ostream& out, const Player& p);
 };
