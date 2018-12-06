@@ -21,16 +21,16 @@ Reward::Reward(Rubies r) {
 
 Reward::operator int() const {
 	switch(rubies) {
-		case One:
+		case Rubies::One:
 			return 1;
 			break;
-		case Two:
+		case Rubies::Two:
 			return 2;
 			break;
-		case Three:
+		case Rubies::Three:
 			return 3;
 			break;
-		case Four:
+		case Rubies::Four:
 			return 4;
 			break;
 	}
