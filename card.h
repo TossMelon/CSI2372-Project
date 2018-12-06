@@ -28,6 +28,7 @@ enum class FaceBackground { Red, Green, Purple, Blue, Yellow };
 class Card
 {
 	friend class CardDeck;
+	
 	FaceAnimal face;
 	FaceBackground colour;
 	char charFace;
