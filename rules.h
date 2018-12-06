@@ -1,5 +1,6 @@
 /* 
-
+	rules.h
+	
 	CSI 2372 Project
 	Memory Card Game - Memoarrr!
 	
@@ -20,12 +21,10 @@
 //Check if a selection of a player is valid
 class Rules
 {
-	int playerCounter;
-	char convert(FaceAnimal a) const;
-	char convert(FaceBackground b) const;
+	int nPlayers, playerCounter;
 	
 	public:
-		Rules(); //Rules constructor
+		Rules(int numPlayers); //Rules constructor
 		bool isValid(const Game& g);
 		bool gameOver(const Game& g);
 		bool roundOver(const Game& g);
