@@ -36,9 +36,9 @@ class Card
 	int nRows;
 	
 	Card(FaceAnimal, FaceBackground); //Card constructor
-	string operator()(int) const;
 	
 	public:
+		string operator()(int) const;
 		operator FaceBackground() const; //Conversion operator to FaceBackground
 		operator FaceAnimal() const; //Conversion operator to FaceAnimal
 		int getNRows() const;
