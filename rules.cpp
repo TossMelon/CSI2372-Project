@@ -12,7 +12,10 @@
 	Student Number: 8250803
 */
 
+//#define TEST_RULES //Rules Test Compile Switch
+
 #include "rules.h"
+#include "card.h"
 
 Rules::Rules(int numPlayers) {
 	nPlayers = numPlayers;
@@ -23,7 +26,7 @@ Rules::Rules(int numPlayers) {
 bool Rules::isValid(const Game& g) {
 	const Card* prev = g.getPreviousCard();
 	const Card* curr = g.getCurrentCard();
-	
+
 	if( ((FaceAnimal)*prev) == ((FaceAnimal)*curr) ) {
 		return true;
 	} else if ( ((FaceBackground)*prev) == ((FaceBackground)*curr) ) {
@@ -44,16 +47,31 @@ bool Rules::gameOver(const Game& g) {
 //Return true if there is only one active Player left
 bool Rules::roundOver(const Game& g) {
 	int activeCounter = 0;
+
+	Player& p = g.getPlayer(Side::Bottom);
 	
-	for(int i=0; i<nPlayers; i++) {
-		const Player& p = getNextPlayer(g);
-		if(p.isActive() == true) {
+	if(p.isActive()) {
 		activeCounter++;
-		}
 	}
 	
-	playerCounter = 1;
+	p = g.getPlayer(Side::Top);
 	
+	if(p.isActive()) {
+		activeCounter++;
+	}
+	
+	p = g.getPlayer(Side::Left);
+	
+	if(p.isActive()) {
+		activeCounter++;
+	}
+	
+	p = g.getPlayer(Side::Right);
+	
+	if(p.isActive()) {
+		activeCounter++;
+	}
+
 	if(activeCounter == 1) {
 		return true;
 	} else {
@@ -61,22 +79,61 @@ bool Rules::roundOver(const Game& g) {
 	}
 }
 
-//Return next player in the array of players
+//Return next active player in the array of players
 const Player& Rules::getNextPlayer(const Game& g) {
 	if(playerCounter == 1) {
 		Player& p = g.getPlayer(Side::Bottom);
-		playerCounter++;
-		return p;
+        playerCounter++;
+
+		if(p.isActive()){
+            return p;
+        } else {
+            p = getNextPlayer(g);
+            return p;
+        }
 	} else if(playerCounter == 2) {
 		Player& p = g.getPlayer(Side::Top);
 		playerCounter++;
-		return p;
+
+		if(p.isActive()){
+            return p;
+        } else {
+            p = getNextPlayer(g);
+            return p;
+        }
 	} else if(playerCounter == 3) {
 		Player& p = g.getPlayer(Side::Left);
 		playerCounter++;
-		return p;
+
+		if(p.isActive()){
+            return p;
+        } else {
+            p = getNextPlayer(g);
+            return p;
+        }
 	} else {
 		Player& p = g.getPlayer(Side::Right);
-		return p;
+		playerCounter = 1;
+
+		if(p.isActive()){
+            return p;
+        } else {
+            p = getNextPlayer(g);
+            return p;
+        }
 	}
 }
+
+//Rules Unit Test
+#ifdef TEST_RULES
+
+int main() {
+	cout<<"Testing Rules Class\n"<<endl;
+	/*Rules(int numPlayers); //Rules constructor
+	bool isValid(const Game& g);
+	bool gameOver(const Game& g);
+	bool roundOver(const Game& g);
+	const Player& getNextPlayer(const Game& g);*/
+}
+
+#endif
