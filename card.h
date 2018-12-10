@@ -45,4 +45,4 @@ class Card
 		friend ostream& operator<<(ostream&, const Card&);
 };
 
-#endif
+#endif // CARD_H
