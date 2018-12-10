@@ -32,4 +32,4 @@ class Reward
 		friend ostream &operator << (ostream &out, const Reward &r); //Ostream operator
 };
 
-#endif
+#endif // REWARD_H
