@@ -23,4 +23,4 @@ class RewardDeck: public Deck<Reward> {
 		static RewardDeck& make_RewardDeck();
 };
 
-#endif
+#endif // REWARDDECK_H
